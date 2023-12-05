@@ -38,7 +38,7 @@ const posts = [
         "media": "https://unsplash.it/600/400?image=24",
         "author": {
             "name": "Luca Formicola",
-            "image": null
+            "image": "https://unsplash.it/300/300?image=20"
         },
         "likes": 56,
         "created": "2021-04-03"
@@ -94,16 +94,12 @@ posts.forEach(element => {
 
     posts_list.innerHTML += post;
 
-    const btn_like = document.querySelector(".like-button");
-    let i = 0;
-    while (i < posts.length) {
-        btn_like.addEventListener("click",
-            function () {
-                btn_like.style.color = "blue";
-            }
-        )
-        i++;
-    }
+    const btn_like = document.querySelectorAll(".like-button");
+    btn_like.addEventListener("click",
+        function () {
+            btn_like.style.color = "blue";
+        }
+    )
 });
 
 
