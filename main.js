@@ -91,5 +91,22 @@ posts.forEach(element => {
             </div>            
         </div>`
 
+
     posts_list.innerHTML += post;
+
+    const btn_like = document.querySelector(".like-button");
+    let i = 0;
+    while (i < posts.length) {
+        btn_like.addEventListener("click",
+            function () {
+                btn_like.style.color = "blue";
+            }
+        )
+        i++;
+    }
 });
+
+
+
+
+
