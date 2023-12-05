@@ -38,7 +38,7 @@ const posts = [
         "media": "https://unsplash.it/600/400?image=24",
         "author": {
             "name": "Luca Formicola",
-            "image": "https://unsplash.it/300/300?image=20"
+            "image": null
         },
         "likes": 56,
         "created": "2021-04-03"
@@ -57,19 +57,24 @@ const posts = [
 ];
 
 //scorrere l'array di oggetti e per ogni oggetto creare un post da appendere con innerHTML al posts-list
-
 const posts_list = document.querySelector(".posts-list");
 posts.forEach(element => {
+    let data = element.created.split("-").reverse().join("-");
+    let image = element.author.image;
+    if(image === null){
+        image = element.name;
+    }
+
     let post =
         `<div class="post">
             <div class="post__header">
                 <div class="post-meta">                    
                     <div class="post-meta__icon">
-                        <img class="profile-pic" src="${element.author.image}" alt="${element.author.name}">                    
+                        <img class="profile-pic" src="${image}" alt="${element.author.name}">                    
                     </div>
                     <div class="post-meta__data">
                         <div class="post-meta__author">${element.author.name}</div>
-                        <div class="post-meta__time">${element.created}</div>
+                        <div class="post-meta__time">${data}</div>
                     </div>                    
                 </div>
             </div>
@@ -97,16 +102,25 @@ posts.forEach(element => {
 });
 
 
-
+let flag = false;
 const btnLike = document.querySelectorAll(".like-button");
 const arrayId = [];
 btnLike.forEach((el, index) => {
+
     el.addEventListener('click',
         function (event) {
-            el.style.color = "blue";
             const likes = document.querySelectorAll(".js-likes-counter");
-            likes[index].innerHTML = posts[index].likes + 1;
-            arrayId.push(posts[index].id);
+            if(flag === false){
+                el.style.color = "blue";
+                flag = true;
+                likes[index].innerHTML = posts[index].likes + 1;
+                arrayId.push(posts[index].id);
+            }
+            else{
+                el.style.color = "black";
+                flag = false;
+                likes[index].innerHTML = posts[index].likes;
+            }
             event.preventDefault();
             console.log(arrayId);
         }
