@@ -94,14 +94,29 @@ posts.forEach(element => {
 
     posts_list.innerHTML += post;
 
-    const btn_like = document.querySelectorAll(".like-button");
-    btn_like.addEventListener("click",
-        function () {
-            btn_like.style.color = "blue";
-        }
-    )
+    // let btn_like = document.querySelectorAll(".like-button");
+    // btn_like.forEach((item)=>{
+    //     item.addEventListener('click',()=>{
+    //         item.style.color = "blue";
+    //     })
+    // })
+
+
+
 });
 
+
+
+const btnLike = document.querySelectorAll(".like-button");
+btnLike.forEach((el) => {
+    el.addEventListener('click',
+        function (event) {
+            el.style.color = "blue";
+            event.preventDefault();
+            
+        }
+    )
+})
 
 
 
