@@ -57,6 +57,7 @@ const posts = [
 ];
 
 //scorrere l'array di oggetti e per ogni oggetto creare un post da appendere con innerHTML al posts-list
+
 const posts_list = document.querySelector(".posts-list");
 posts.forEach(element => {
     let post =
@@ -93,31 +94,21 @@ posts.forEach(element => {
 
 
     posts_list.innerHTML += post;
-
-    // let btn_like = document.querySelectorAll(".like-button");
-    // btn_like.forEach((item)=>{
-    //     item.addEventListener('click',()=>{
-    //         item.style.color = "blue";
-    //     })
-    // })
-
-
-
 });
 
 
 
 const btnLike = document.querySelectorAll(".like-button");
-btnLike.forEach((el) => {
+const arrayId = [];
+btnLike.forEach((el, index) => {
     el.addEventListener('click',
         function (event) {
             el.style.color = "blue";
+            const likes = document.querySelectorAll(".js-likes-counter");
+            likes[index].innerHTML = posts[index].likes + 1;
+            arrayId.push(posts[index].id);
             event.preventDefault();
-            
+            console.log(arrayId);
         }
     )
 })
-
-
-
-
