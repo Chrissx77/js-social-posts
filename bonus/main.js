@@ -103,8 +103,9 @@ posts.forEach(element => {
 
 
 let flag = false;
-const btnLike = document.querySelectorAll(".like-button");
 const arrayId = [];
+
+const btnLike = document.querySelectorAll(".like-button");
 btnLike.forEach((el, index) => {
 
     el.addEventListener('click',
